@@ -1,6 +1,9 @@
-**** SDBox Multiboot Disk README ****
+#### SDBox-Multiboot README ####
 
-HOW TO PREPARE THIS DISK (Read this first!) 
+Boot Workbench from SD card on any Amiga with SDBox!
+
+
+# HOW TO PREPARE THIS DISK (Read this first!) 
 
 This disk requires workbench files in order to function. 
 The files are not included for copyright reasons and must be copied from a Workbench 1.3 floppy as below: 
