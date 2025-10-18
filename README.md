@@ -1,9 +1,9 @@
-#### SDBox-Multiboot README ####
+# SDBox-Multiboot README 
 
-Boot Workbench from SD card on any Amiga with SDBox!
+### Boot Workbench from SD card on any Amiga with SDBox!
 
 
-# HOW TO PREPARE THIS DISK (Read this first!) 
+## HOW TO PREPARE THIS DISK (Read this first!) 
 
 This disk requires workbench files in order to function. 
 The files are not included for copyright reasons and must be copied from a Workbench 1.3 floppy as below: 
@@ -13,14 +13,14 @@ The files are not included for copyright reasons and must be copied from a Workb
 3. Follow the prompts to copy the Workbench files to this disk
 
 
-Note for SDbox V2 Users
+### Note for SDbox V2 Users
 
 V2 of the SDBox requires a different driver (spisd.device)
 The driver is included in the Storage drawer and must be copiied to both DEVS: and Payload/common/devs
 The DirWork (DW) file manager is included for this and all your file management needs. 
 
 
-ABOUT SDBox Multiboot
+## ABOUT SDBox Multiboot
 
 The purpose of this floppy disk is to boot a Workbench environment compatible with 
 the installed kickstart from a connected SDBox device. 
@@ -29,14 +29,14 @@ This brings a portable "HDD-like" Workbench environment to any Amiga.
 
 It's also a general-purpose SDBox utility disk. 
 
-Features:
+### Features:
 
 * Searches SD card for most compatible workbench environment
 * Optional RAD: (BOOTRAD) device to reboot from SDBox without a floppy
 * Basic SDBox driver install script for internal hard drive
 * Can boot Workbench from floppy with SDBox mounted 
 
-Some use cases:
+### Some use cases:
 
 * Turn ANY Amiga into a HDD system! (kinda)
 * Data transfer to/from internal fixed storage 
@@ -44,11 +44,11 @@ Some use cases:
 * Use as your daily driver, if you dare
 * Mount SDBox then boot Workbench floppy for installation to SD card
 
-DISCLAIMER 
+## DISCLAIMER 
 
 I'm not an Amiga expert. Use entirely at your own risk.
 
-REQUIREMENTS
+## REQUIREMENTS
 
 * Any Amiga with Kickstart 1.3 or higher
 * SDBox and micro SD card (see below)
@@ -56,7 +56,7 @@ REQUIREMENTS
 * Workbench 1.3 (some files are required by SDBox Multiboot)
 
 
-HOW IT WORKS
+## HOW IT WORKS
 
 SDBox Multiboot boot sequence:
 
@@ -77,20 +77,20 @@ SDBox Multiboot boot sequence:
 The floppy can then be ejected as Workbench will run from the SD card.
 
 
-HOW TO PREPARE THE MICRO SD CARD
+## HOW TO PREPARE THE MICRO SD CARD
 
 1) MS-DOS partition table
 2) A single <4GB Primary Fat32 partition (smaller partitions mount more quickly)
 
 
-INSTALLING WORKBENCH TO SD0: FROM AMIGA
+## INSTALLING WORKBENCH TO SD0: FROM AMIGA
 
 1) Insert the prepared SD card into SDBOX and boot from this floppy
 2) When prompted, insert your Workbench or WB Install floppy to DF0: and hit enter
 3) Once booted, install Workbench to SD0: in the usual way
 
 
-INSTALLING MULTIPLE WORKBENCHES FROM PC
+## INSTALLING MULTIPLE WORKBENCHES FROM PC
 
 1) Create the below drawers as required:
 
@@ -110,23 +110,23 @@ the root of the SD card.
 Install the micro SD card and enjoy!
  
  
-USING BOOTRAD (Persistent boot)
+## USING BOOTRAD (Persistent boot)
 
 When BOOTRAD is enabled the boot files will be copied to recoverable RAMDrive 
 ("BOOTRAD") instead of RAM. Workbench can then be rebooted from the SDBox without using this disk.
 
-To Enable BOOTRAD
+### To Enable BOOTRAD
 
 1) From workbench, open SDBox Multiboot and run enable-bootrad
 2) BOOTRAD is enabled at next floppy boot 
 
-To Disable BOOTRAD
+### To Disable BOOTRAD
 
 1) From Workbench, open SD Multiboot and run disable-bootrad
 
 Active BOOTRAD can also be cleared by powering-off the Amiga. 
 
-CAVEATS:
+### CAVEATS:
 BOOTRAD will occupy a chunk of chipram as long as it is active, whereas 
 booting from RAM: (default) releases used memory after boot completes.
 
@@ -136,7 +136,7 @@ On 2.0+ systems BOOTRAD can be smaller as more DOS commands are in ROM.
 As such BOOTRAD is not recommended on stock 1.3 Amigas. 
 
 
-OTHER NOTES
+## OTHER NOTES
 
 RAD size could likely be optimised a little more by reducing sector size on >2.0 systems
 but this does not appear to be possible (mount fails when SectorSize = 256). 
