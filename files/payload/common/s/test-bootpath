@@ -1,0 +1,31 @@
+.KEY path/A
+
+assign >NIL: TSYS: exists 
+if WARN
+    echo NOLINE "Testing path <path>.. "
+    if exists <path>c/version
+      if exists <path>Libs
+        assign TLIBS: LIBS:
+        assign LIBS: <path>Libs
+        
+        <path>c/version >NIL:
+        
+        if not FAIL
+          assign TSYS: <path>
+        endif
+        
+        assign LIBS: TLIBS:
+        assign TLIBS: REMOVE
+      endif
+    endif
+
+  assign >NIL: TSYS: exists 
+
+  if WARN
+    echo "Nope"
+  else
+    echo "OK"
+  endif
+
+endif
+

@@ -1,0 +1,973 @@
+
+	DirWork V1.62 - Chris Hames 12th June 92.  All rights Reserved.
+	---------------------------------------------------------------
+			DW Size 70968 bytes
+
+	Need to get around your directories fast and simply.  Force yourself
+to read fully this doc file and I think you will find this program of great
+use.  What makes DirWork better than the rest ?
+
+	VERY Configurable.  Buttons/Button-keys/Options/Screen Mode/
+	Screen Colors/Window Size/Window Position/PopKeys/Tools etc can be
+	modified and the DW executable modified to have these values.
+	External configuration editor program to make changes easier.
+
+	Detaches.  So when you type DW from Shell/CLI you can still use your
+	Shell/CLI as if nothing happened.  No need to Run!  Paths are kept!
+
+	Sleep. Can be put to sleep so it disappears completely until you
+	select it from the workbench tools menu (kick2.0-) or press left
+	Ctrl-Shift-Alt-D or whatever keys you configured it to.
+	Also can be started in sleep mode so "DW -s" in your
+	startup-sequence will have it there for when you want it later.
+	You can also place DW in your WBStartUp drawer and add the ToolTypes
+	SLEEP & DONOTWAIT.
+
+	Intelligent.  Double click the left mouse button on the filename of
+	a IFF picture and it will be automatically displayed.  Double click
+	a text file to display it, press the right mouse button to edit it!
+	Double Click a .lzh file and you see the contents, right mouse
+	button on one extracts the contents to the destination dir and then
+	reads in the new entries.  If you have a middle button then pressing
+	it on the .lzh will extract the files in the background so you can
+	continue doing other things.
+	As well as many other instant actions on different types of files
+	and the instant types are configurable.
+
+	The inbuilt text viewer, picture viewer and disk functions
+	run as separate processes on separate screen so you can double
+	click a text file and then continue working with DW then swap
+	the screen and the text viewer is still there.  Your diskcopy
+	can be going on one screen while you a copying files with DW as
+	normal.
+
+	A show built in that loads in the next picture while your looking
+	at the last.  Does icons, SHAM and some DHIRES pictures.  You can
+	of course set up a button to use your own show utility.
+
+	Buffered directories.  Press the right mouse button over the dir
+	text gadget and you get a menu of previous directories which you
+	can instantly go to.  Parent buttons that will use the buffered
+	dir when appropriate to save you heaps of dir loading time.
+
+	A completely mouse controlled type/hxtype which will automatically
+	decrunch powerpacker crunched text files.
+
+	Both memory and BootBlock virus checking.
+
+	Inbuilt Diskcopy/Format/Install with multiple destinations etc.
+
+	PopKeys.  Define keys to start up programs. eg make Amiga-P start
+	your paint program.  Amiga-Escape start a NewShell etc etc etc
+	Also adds these programs to DW's menu and your workbench Tools menu
+	if using Kick2.0-.
+
+	ScreenBlanker so that the phosphors on your monitor get a rest.
+	AutoPoint option so that the window the mouse is over is selected.
+	MouseAccelerator with selectable threshold.
+
+	Copy & move cloning so that the date/protection/filenote is same.
+
+	Fast and Smooth Floppy Dirs!  Getting a directory off a floppy
+	is up to 2 times faster.  And your drive doesn't grind back and
+	forward anywhere near as much as normal.
+
+	Size.  At less than 70K uncompressed it makes mince meat of most
+	of those huge memory hungry utilities.
+
+
+This program is SHAREWARE so please support the work that has gone into it.
+To minimize bank charges please try to contribute with one of the following:-
+	Australian Cash or Cheque.
+	Any cheque drawn on a Australian Bank.
+	Foreign Cash (US, English or German preferred).
+	International Money Order or Bank Cheque.
+The suggested contribution of $35 makes you a registered user.  This allows
+you to get direct support from me as well as access to updates.  You also a
+disk containing the next major version (when it is available) of this program
+sent to you.
+Please send the contribution & any ideas etc to:-
+	C Hames           |Internet:
+Snail:	6 Pamela Crt      |   bytey@phoenix.pub.uu.oz.au
+	Blackburn South   |   bytey@phoenix.apana.org.au
+	VIC 3130          |FidoNet BBS:
+	Australia         |   3:633/353
+And don't forget to include the version number you have!
+
+This program may be copied as long as it is accompanied by this doc file
+both unaltered & no money is charged(except for a reasonable copying fee
+such as what Fred Fish charges).  All use of this program is at your own
+risk & I assume no responsibility or liability for any problems that occur.
+
+Future Improvements:- (When registering please tell me which ones you want)
+	More configurable. ie Screens/ButtonPositions/Colors/Priority etc
+	copy/move not going to fit requester
+	Sort by date and size.
+	Text viewer handle ANSI better(& 8 color option).
+	BootBlock brain file.
+	Play Stereo sound samples.
+	PointerBlanker.
+	print separate process.
+	Window to front by double clicking.
+	Recorded keystrokes.
+	Auto load of directory on startup. DW dh0:
+	Copy/delete/move option to copy .infos as well
+	copy,delete,move want to quit, try again unprotected, continue.
+	Faster(the need for speed!).
+
+NOTE:
+ **************************************************************************
+* Updates don't magically appear.  So support the product by contributing. *
+* If there aren't many contributing in the future no updates, crippleware  *
+* or similar will be what happens.                                         *
+ **************************************************************************
+
+
+
+History:-
+	27/ 1/90 1.00	First Release.
+	 5/ 2/90 1.01	VMK updated to v27.  Stopped title bar flashing.
+	12/ 2/90 1.02	Icon. Faster. Smaller. Now uses less memory(5K) if
+			destination display is not used.
+	15/ 2/90 1.03	Detaches from CLI.  Some Workbench problems fixed.
+			A Show bug fixed.
+	22/ 2/90 1.04	CD bug fixed.  Volumes button added.  Dir buttons
+			and options can be modified and saved.  VMK can
+			now automatically be executed every 10 secs.
+	14/ 7/90 1.10	Heaps of little improvements. Copy/Delete/Move Dirs.
+			Now VERY configurable buttons. Sleep. Window sizing.
+			HxType/Type/Search Esc works anytime now. Rename/
+			makdir/copy/move/delete add or remove from both
+			filelists where appropriate.  So many more changes
+			that I am calling it 1.10 !
+	30/ 7/90 1.11	Bug fixed when getting dirs with spaces in them.
+	17/ 8/90 1.12	Rare problem getting dirs with spaces at end.
+	10/ 1/91 1.20	More than 255 files displayed.
+			Dirs above files option added.
+			And too many other things to mention.
+	13/ 1/91 1.21	Sometimes crashed when started from cli,
+			bug found in detach routine. Argh!!
+			Display .info files option added.
+			Window Pos now saved with config.
+	16/ 1/91 1.22	Recognition of text files improved. Other little
+			things improved.
+	10/ 6/91 1.30	Wouldn't save config if started in sleep mode (-s)
+			fixed.  Didn't open some windows at same offset as
+			window fixed.  Now gets the dirs after sleep.
+			Automatically gets info(bytes free) for dirs after
+			a copy move or delete. MakeDir can have icon.
+			Bootblock checking.  Popkeys.  ScreenBlanking.
+			Runs programs with spaces(Dave!).
+			Save's path of DW program with save executable.
+			Paths other than C: recognized(Thanks Randell).
+			Parent/root far left or right of the text gadget
+			right mouse button over text gadget gets dir.
+			Shells etc now have close gadgets if kick 2.0,
+			and the N,x,u commands have been improved.
+			Kick 2.0 looks. Heaps of other little things.
+	22/ 6/91 1.31	Requester kick 1.2/1.3 freeze bug hopefully gone.
+			Crash after RMB instant getdir gone.
+			AutoPoint for James.  Screen option.
+			Copy/move clone code better and kick 1.2/1.3 date.
+			Filenote problem with FSDirs problem fixed.
+			Better FileSelection. Requester bigger.
+			FileBits/Note writing under Kick 1.2/1.3 fixed.
+			Resizing doesn't make slide gadgets go to top.
+			Kick 2.0- execute window title shows path.
+			Delete didn't request for non-empty dirs fixed.
+			Popkey stuff gets added to tools menu in Kick2.0-
+			No flashing bottom line.
+			And some other little things.
+	13/10/91 1.40	Middle mouse button instant actions added.
+			Button/Instant Config strings larger & key codes.
+			Popkey data larger & with full function defs.
+			PopKey/tools now are in DW menu as well now.
+			ScreenBlank bug removed. Volumes button improved.
+			Right parent/root allows for window width not 640.
+			Two characters are now used to show protection.
+			Uses paths when started from workbench.
+			PlaySS now uses rate in 8SVX files.
+			Inbuilt Diskcopy/Format/FormaQuick/Install added.
+			Wakeup now brings screen/window to front and
+			activates if it is already open.
+			Key to go to those letter entries for Michael.
+			Bug in IFF Show with strange width pictures fixed.
+			and some Overscan support added.
+			CAPSLOCK qualifier is now ignored for keys.
+			AutoPoint drag bug fixed.  MouseAcceleration added.
+			Buffered directories menu added.
+			Added option to allow only one DW to be in memory.
+	21/10/91 1.41	Qualifier with selected file filebits bug fixed.
+			FSDir bug fixed with trying to get a file.
+			Double Click file selection update fixed.
+	23/10/91 1.42	Swap only refreshed one of the text gadgets.
+			Double clicking a file that DW couldn't open bugfix.
+			Sleep could cause dir without files to be buffered.
+			A few other little things.
+	30/10/91 1.43	Fixed certain space filenames causing partial getdir.
+			Type would do partial read of powerp file if no lib.
+			Right mouse on little buttons sometimes did bufmenu.
+			DiskName & BytesFree wasn't shown until after getdir.
+			Added keyboard equiv for Type buttons.
+			Button colors/looks now more consistent.
+	 2/ 2/92 1.50	Source and destination DiskOp selection fixed.
+			Awake didn't bring WB screen to front fixed.
+			FBits  size failed on file with rwed off in (k2.0).
+			Copy/move didn't delete partial files if error.
+			Copy can copy as
+			Functions N,u,a can CD source or destination dir.
+			Function x has become obsolete now use u.
+			Instant types now can be changed.
+			3 more instant types added.
+			Pattern select(K2.0-) added to func j and l obsolete.
+			Requester should now adjust for massive title.
+			Makdir adds drawer to list if appropriate.
+			Show does icons, SHAM and some DHIRES.
+			DW screen is public(K2.0-) so CON's can open on.
+			Function a now does spaces and adds "/*" to dirs.
+			Tools menu splits into 2 if too many tools for one.
+			Info function does Dir bytes as well.
+			Function w make icon added.
+			Function L relabel added.
+			keyQualCode conversion problems fixed.
+			RMB activates window option.
+			Parent using buffered dir option added.
+			Key activate for left/right text gad added.
+			Diskcopy to same drive without the ram crash fixed.
+			DiskOp src/des now stored in config.
+			DiskOp FFS formatting.
+			DiskOp,Show,Type are now run as separate processes!
+			Type new keys h,j,j,keypad8,keypad2,keypadhome,
+			CtrlUpcursor,keypadend,CtrlDowncursor,q,keypad5.
+			Type separate overscan(Kickstart2.0-) screen.
+			Type ANSI search and print.
+	 4/ 2/92 1.51	Some show problems fixed.
+
+	 1/ 6/92 1.60	Many improvements to show including autoscroll,
+			fixed some problems with SHAM & DHIRES pics,
+			added keys to allow moving around bitmaps by
+			page and extremes, added keys to move the view
+			around, added key to toggle interlace.
+			Relabel was made 2.0 only as it should have been.
+			Will now try to use arp.library for date if 1.2/1.3.
+			Can be started in sleep mode with SLEEP tooltype.
+			Right/Middle mouse button actions use to work even
+			if DW window not visable but active!
+			Sorting filenames with numbers improved.
+			Filebits always set the read protect bit.
+			Made all console windows /AUTO under 2.0
+			Made s,d CD options refetch only if not capital.
+			Print could keep asking cancel!!!
+			Type/HxType would report not enough memory with
+			certain filesystems under Kickstart 2.0.
+			Type/HxType/Show would leave DW busy even if it was
+			displaying the last file to be displayed.
+			Type/HxType slider gadget under Kick1.2/1.3 would
+			sometimes not allow you to view start of file.
+			Type/HxType would only recognize right shift key.
+			Prompts wouldn't be displayed in certain situations.
+			File/Dir size would only display 7 characters.
+			Type/HxType/Show under Kickstart 2.0 would centre
+			the screen incorrectly for overscan screens.
+			Move/Copy/Delete various improvements.
+			Workbench library under Kickstart 2.0 only open
+			when needed.
+	 2/ 6/92 1.61	DW was turning the sprites off.
+	12/ 6/92 1.62	Stack given to other programs could have been zero
+			under Kickstart 1.2/1.3 when DW started from WB.
+			Stack given to other programs is now inherited
+			if DW started from Shell/CLI.
+			Display of picture could busy wait on edges.
+============================================================================
+MANUAL
+
+	1. Instructions for the default DirWork
+	2. Options in DirWork & Options in DWEdit
+	3. Hints/tips
+============================================================================
+
+----------------------------------------------------------------------------
+	1. Instructions for the default DirWork
+----------------------------------------------------------------------------
+
+The window display
+  +--------------------------------------------------------------------+
+  |+|  Title Bar - Chip & total memory available                   | | |
+  |--------------------------------------------------------------------|
+  |  +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++   |
+  |  +++ Buttons +++ +++ +++ +++ +++ Buttons +++ +++ +++ +++ +++ +++   |
+  |  +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++   |
+  /   Left Directory    Al No CD << <> >> CD No Al Right Directory     /
+  |--------------------------------------------------------------------|
+  | Left File List                | || |        Right File List        |
+  |                               |S||S|                               |
+  | DirectoryName         ??      |l||l| DirectoryName         ??      |
+  |    OR                         |i||i|    OR                         |
+  | FileName              ??  size|d||d| FileName              ??  size|
+  |                        ^      |e||e|                        ^      |
+  |         if undeletable u      | || |         if undeletable u      |
+  |        if has filenote f      |G||G|        if has filenote f      |
+  |           if is script s      |a||a|           if is script s      |
+  |                if pure p      |d||d|                if pure p      |
+  |                               |g||g|                               |
+  |                               |e||e|                               |
+  |                               |t||t|                               |
+  |                               | || |                               |
+  |--------------------------------------------------------------------|
+  |Errors and other messages     Disk Names & Bytes Free as well       |
+  +--------------------------------------------------------------------+
+
+Actual directory text (Left Directory or Right Directory)
+
+	Pressing the Right mouse button when over the text showing the path
+	of the dir brings up a menu of previous directories as well as a list
+	of volumes.  If you just let go over the text gadget it will read
+	that directory into the file list.
+	eg If DF0: was in the Left Directory text gadget you could insert
+	   a new disk into the internal disk drive DF0: and then press the
+	   right mouse button over the DF0: in the Left directory text to
+	   read in the new directory.
+	If you move down onto one of the previous directory names and let go
+	it will be fetched from memory (it won't read the disk to get it)
+	since it is buffered from when you recently read that directory.  If
+	you let go on of the volumes (these are a list as if you pressed the
+	volumes button and are indented one to the right) it will be read in
+	from disk.
+
+	Pressing the left mouse button over the far left/right of the text
+	gadget(see the "/" in window representation above) gets the parent.
+	Parent makes DF0:t/r become DF0:t
+	Right button gets the root. Root makes DF0:t/r become DF0:
+	If the Parent buf option is on (is by default) and the last directory
+	you read is the same as the new one the buffered copy of the dir is
+	used. ie if you get the dir "DF0:" then "DF0:??" then press parent
+	or root buttons "DF0:" will not be re-read from disk, the buffered
+	copy will be used instead.
+
+	You can press the left mouse button over the left or right directory
+	text gadget then edit the directory to the one you want to work with
+	and then if you press return the directory will be read in.
+	These gadgets can be activated by the keys Del & Help for left &
+	right respectively (see DWEdit if you want to change these keys)
+	Remember in most string gadgets right Amiga X clears the text in
+	the gadget, and you can use shift -> or <- to go to end or start
+	of the text.
+
+
+FileList(s)
+
+	Press the left mouse button to select/deselect a file or directory
+	name.
+
+	Right mouse button or double click left button on a directory reads
+	in that directory.
+
+	Left mouse button to the far left or right of a file/dir will
+	bring up a requester with information about the file/dir
+	the Filename, FileNote and Protection bits which you can edit.  As
+	well as the size and date(only if using kickstart 2.0- or you have
+	the arp.library).  If you select a file the title bar of this
+	information window will tell you what instant type DW would have
+	used if you had double clicked this file.  If this instant type is
+	ILBM (a IFF picture file) it will also tell you the
+	Width*Height*Depth.
+
+	Use the slide gadget to see files that are not displayed.  You can
+	also put the mouse pointer over the file list and press the key of
+	the first letter of the filename you are interested in and the file
+	list will move to the files/dirs starting with that letter.
+
+	Double Click of left Button on a file will try to recognize the file
+	and automatically do something with the file(eg With default settings
+	the quickly double clicking the left button on a text file will type
+	it & and double clicking on a IFF picture(such as a picture from a
+	paint program) file will show it with the internal show).
+
+	Right Mouse Button on a file will try to recognize the file and
+	automatically do something with the file.
+	eg With default settings the Right mouse button on a text file will
+	   edit it (If you have configured your instant edit to your editor
+	   or it already is) or pressing the right mouse button on a picture
+	   file will show it with Mostra(© Sebastino Vigna) if you have that
+	   program.
+
+	Middle Mouse button will also do another selectable action if you
+	have one on your mouse and have Kickstart 2.0-.
+
+Here is a table of the default instant Operations:-
+
+
+File type	Double Clicking			Right Mouse button
+----------------------------------------------------------------------------
+MOD.		Intuitracker filename		Run >NIL: Intuitracker file
+.ARC		Arc v filename			Arc xw filename
+.DMS		DMS Write filename		DMS Write filename
+.LZH		LZ l filename			LZ -m -x -r x filename
+.LHW		Lhwarp Write 0 filename		Lhwarp Write 0 filename
+.PAK		filename			filename
+.WRP		UnWarp filename			Run >NIL: UnWarp filename
+.ZIP		UnZIP -v filename		UnZIP -xdo filename
+.ZOO		Zoo v filename			Zoo xO// filename
+.GIF		VirtGIF filename		Run >NIL: VirtGIF filename
+.INFO		INTERNAL Show			Run >NIL: IconEdit filename
+8SVX		INTERNAL PlaySS filename	PlaySS filename
+ANIM		ShowANIM filename		ShowANIM filename
+ILBM		INTERNAL Show filename		Mostra filename
+SMUS		PlaySMUS filename		PlaySMUS filename
+FTXT
+Most		Most filename			Run >NIL: Most filename
+PowPk		INTERNAL Type filename		PPShow filename
+Exect						filename
+Text		INTERNAL Type filename		Run >NIL: E filename
+Binry		INTERNAL HxType filename	Run >NIL: NewZAP filename
+.LHA		LZ l filename			LZ -m -x -r x filename
+.UUE		INTERNAL Type filename		uudecode filename
+.JPG		Run >NIL: JView			Run >NIL: JView
+
+
+Buttons
+	The main idea is to press the left mouse button if you are referring
+	to the source as the file list below the pointer.  So to copy from
+	the left file list to the right list, click on the left copy
+	button.  And to copy from the right file list to the left file list,
+	click on the right copy button.
+
+	You can also click on a button with the right mouse button to refer
+	to the opposite file list but if this sounds confusing just ignore
+	this paragraph.
+	(eg Left button on left DF0: will get the directory from DF0:
+	and put it in the left file list, but right button on left DF0: will
+	get the directory DF0: and put it in the right file list)
+
+	Below is a description of what the buttons will do when the default
+	setup is used.  You can modify button functions to do something
+	completely different if you want.
+
+	DF0: DF1: RAM: SYS: etc
+		Just press these to get the directory of this name in the
+		file list below the pointer.
+
+	Sleep	Puts the task to sleep until you press the four left keys
+		Ctrl-Shift-Alt-D.  ie The window disappears as if you quit
+		but the program is still there waiting until you press the
+		keys.  So you don't have to load DirWork all the time.
+		DirWork starts in Sleep mode if you type DW -s instead of
+		the usual DW when you run it from Shell/CLI, or you add the
+		SLEEP & DONOTWAIT tool types to the DW icon and start it
+		from workbench.
+		So you can have the command DW -s in your startup-sequence
+		or DW in your WBStartup drawer then when you actually want
+		DirWork later you just have to press the keys
+		Ctrl-Shift-Alt-D or if running Kick2.0- just can select DW
+		in the Tools menu of workbench.
+		Do what you want then press the sleep button to make DirWork
+		disappear again.  See PopKeys information for how to change
+		the key combination that wakes DirWork up.
+
+	Al	Select all files.  See DWEdit to make it select dirs as well.
+
+	No	Unselect all files & dirs.  See DWEdit for other options.
+
+	PatSe	Requests for a pattern to select matching file(s)/dirs(s).
+		This button only works if you are running Kickstart 2.0-.
+		You can toggle if you want Files, Dirs or both to be
+		selected.  Matching is same as AmigaDOS 2.0:-
+
+		?	Matches any character
+		#	Matches the following expression 0 or more times
+		(ab|cd)	Matches either item separated by the |.
+		~	Nots the following expression.
+		[abc]	Matches any of the characters in the brackets.
+		[~ab]	Matches any of the characters not in the brackets.
+		%	Matches 0 characters.
+
+		Examples:-
+
+		~(#?.info)  All files that don't end in .info.
+		#?.dat      All files ending in .dat.
+
+
+
+	<>	Swaps the left and right file list displays.
+
+	>> & <<	Copies one file list to the other file list.
+
+	Info	Updates the info(bytes Free and name). And displays how many
+		dirs/files/bytes are selected.  Good to see if you are going
+		to be able to fit all the file(s)/dir(s) you want to copy.
+
+	Copy	Copies files/dirs from one dir to another.
+		BytesFree for the source/destination is updated.
+		See the DWEdit documentation if you want it to clone
+		the original date/filenote/protection etc.
+
+	CpyAs	Copies files/dirs from one dir to another.  Requests you
+		for the destination name.
+		BytesFree for the source/destination is updated.
+		See the DWEdit documentation if you want it to clone
+		the original date/filenote/protection etc.
+
+
+	Move	Moves files/dirs from one dir to another.
+		BytesFree for the source/destination is updated.
+		See the DWEdit documentation if you want it to clone
+		the original date/filenote/protection etc.
+		Please note the DOS 1.2/1.3 bug where you lose directories
+		if you move a directory to be a child of itself.  I
+		intercept and stop some but not all.
+		ie Move ONE ONE/ONE  !!!!IS NOT A GOOD IDEA!!!!
+
+	Delet	Delete files/dirs.  You are prompted before non empty dirs
+		are deleted for confirmation but see the DWEdit documentation
+		section if you don't like this.
+		BytesFree for the directory is updated.
+
+	Print	Copies selected files text to the printer.
+		See DWEdit for other options like Tabs to spaces.
+
+	Renam	Rename files/dirs.  Edit names in the requester.
+		Please note the DOS 1.2/1.3 bug where you lose directories
+		if you move a directory to be a child of itself.  I
+		intercept and stop some but not all.
+		ie Rename ONE ONE/ONE  !!!!IS NOT A GOOD IDEA!!!!
+
+	MakDi	Make a new directory. Enter name in requester.
+		See the configuration section if you want it to also create
+		a icon for the directory each time.
+
+	Prote	Change delete protection of a file/dir.  Lets you toggle
+		the delete protection of a file.  A file with delete
+		protection on has a u next to the right of the filename.
+		See DWEdit for heaps of different configs for this.
+
+	CD	Makes the dir the current directory.
+
+	Type	Displays a text file to a screen (overscan if kick2.0-).
+		Use the slide gadget on right to quickly scan and use buttons
+		down below to move through the file or toggle between a hex
+		or ASCII display of the file.
+		Or use keyboard:-
+		  Return or CursDown or KeyPad2 or j = NextLine.
+		  CursUp or Keypad8 or k = PrevLine.
+		  Space or Shift/CursDown or KeyPad3 = NextPage.
+		  BackSpace or Shift/CursUp or KeyPad9 = PrevPage.
+		  Keypad7 or Ctrl/CursUp = Start of file
+		  Keypad1 or Ctrl/CursDown = End of file
+		  h to flip between Hex/ASCII.
+		  s or LeftAmiga/s RightAmiga/s to search.
+		  f or LeftAmiga/f RightAmiga/f to search.
+		  Esc or q or Keypad5 = quit.
+
+		It runs as a separate process so you can swap screens and
+		use DW as normal until you don't what the text display any
+		more.
+
+		The screen height and mode can be set from DWEdit.
+
+		The title bar shows the filename and will say
+		"WAS POWERPACKED" if the file was crunched with powerpacker
+		and has been decrunched.  It will say "PARTIAL LOAD" if you
+		didn't have enough memory for the file so only some of
+		it was loaded.
+		By default a double click on a text file will call this
+		routine.
+
+	HxType	Displays a file in hexadecimal to a window.
+		Use the slide gadget on right to quickly scan and use buttons
+		down below to move through the file or toggle between a hex
+		or ASCII display of the file.
+		Or use keyboard:-
+		  Return or CursDown or KeyPad2 or j = NextLine.
+		  CursUp or Keypad8 or k = PrevLine.
+		  Space or Shift/CursDown or KeyPad3 = NextPage.
+		  BackSpace or Shift/CursUp or KeyPad9 = PrevPage.
+		  Keypad7 or Ctrl/CursUp = Start of file
+		  Keypad1 or Ctrl/CursDown = End of file
+		  h to flip between Hex/ASCII.
+		  s or LeftAmiga/s RightAmiga/s to search.
+		  f or LeftAmiga/f RightAmiga/f to search.
+		  Esc or q or Keypad5 = quit.
+
+		It runs as a separate process so you can swap screens and
+		use DW as normal until you don't what the text display any
+		more.
+
+		The screen height and mode can be set from DWEdit.
+
+		The title bar shows the filename and will say
+		"WAS POWERPACKED" if the file was crunched with powerpacker
+		and has been decrunched.  It will say "PARTIAL LOAD" if you
+		didn't have enough memory for the file so only some of
+		it was loaded.
+		By default Double click on a binary file will call this
+		routine.
+
+	Instant	This performs as if you double clicked the left mouse button
+		on the selected files.  It will perform a relevant button
+		on the file if it finds one otherwise it will assume the
+		file is just binary and HxType it.  All these things can
+		be changed, see DWEdit documentation.
+
+	Show	Shows IFF files.  Loads in the next pic while the last
+		is being displayed to save a lot of time.  Move mouse pointer
+		to edge to scroll around a picture bigger than the screen.
+		Use the left mouse button or press a key to go to next.
+		If low on memory select one file at a time to display.
+		By default a double click on a IFF picture file will call
+		this routine.  Will handle SHAM as well as some DHIRES.
+		Can display icons as well.  See DWEdit for more info on this.
+
+		Keys:-
+		
+		Cursors - Move around a large bitmap at 16 pixels each press.
+		Shift/Cursors - Move around at a page each press.
+		Ctrl/Cursors - Move to extreme each press.
+
+		Alt/Cursors - Move the view around a pixel at a time.
+
+		l - Toggle INTERLACE.
+
+		It runs as a separate process so you can swap screens and
+		use DW as normal until you don't what the text display any
+		more.
+
+	PlaySS	Plays any file as a Sampled sound at 10000 samples/sec.
+		Will use the correct rate if the file is a 8SVX.
+		By default a double click on a 8SVX sound file will call
+		this routine.
+
+	Search	Search files for text that you are prompted for.
+		The prompt has a UpperCase!=LowerCase option.
+		It will tell you at want offsets in the file the text is
+		found.
+
+	AdIcn	Creates a project, tool, or drawer icon for any file(s)/
+		dirs(s) specified this is good for when you have a program
+		or a drawer(directory) that doesn't have icon.
+
+
+	DskOp	Starts up the internal floppy copy/format/install program.
+		During operations the track(0-159) and any ERROR number is
+		shown you can stop any operation by pressing the close gadget
+		of the window.  During any diskcopy "Non standard boot block"
+		is shown under track if disk has a not normal bootblock.
+		To Format a floppy:-
+		----------------------
+			Enter diskname in text gadget (defaults to "blank")
+			Select destination(s) by pressing the drive buttons.
+			Press Format or FormatQuick.
+			OFS stands for the Old file system(Normal format).
+			FFS stands for the Fast file system.
+		To Install a floppy:-
+		--------------------
+			Select destination(s) by pressing the drive buttons.
+			Press Install button.
+		To copy a floppy(You must have 2 floppies or 1Meg free):-
+		----------------------------------------------------------
+		With two or more floppies:-
+			Select source by pressing the left drive buttons.
+			Select destination(s) by pressing the drive buttons.
+			Press the DiskCopy button.
+		With one floppy:-
+			Insert the source in DF0:
+			Select DF0: as only source and destination.
+			Press the DiskCopy button.
+			Insert the destination in DF0:
+			Press the WriteBuf button.
+		To check a floppy for disk errors:-
+		-----------------------------------
+			Select source by pressing the left drive buttons.
+			DeSelect all destination(s).
+			Press DiskCopy button and see if you get a error.
+		Multiple copies:-
+		-----------------
+		If you select the source as one of the destinations the
+		complete disk will be put into ram and the WriteBuf button
+		will be turned on.  You can the just keep selecting the
+		WriteBuf button with any destination(s).
+
+		It runs as a separate process so you can swap screens and
+		use DW as normal until you don't what the text display any
+		more.
+
+
+	VMK	My MEMORY virus detector/killer.
+		For a simple check to see that your memory is virus free.
+		Does checks of many memory locations etc that are used
+		by viruses.  If you get a alert use a good disk virus killer
+		to clear up the problem.  See the separate program VMK v1.1
+		for docs.
+
+
+	The following buttons require you to have a external program and/or
+	run in your c: or similar directory.
+
+	Edit	Edit selected files. Requires a editor named E in a path
+		such as c:.
+		If you have no files selected E will be run without a file
+		name.
+		Pressing the right mouse button on a text file will call
+		a similar routine.
+
+	NewZP	NewZAP selected files. Requires Newzap in a path such as c:.
+		NewZAP is a file editor © John Hodgson.
+		If you have no files selected NewZAP will be run without a
+		file name.
+		By default pressing the right mouse button on a binary file
+		will call a similar routine.
+
+	Run	Run selected files.  You will be prompted for optional
+		arguments. eg if you selected the file Diskcopy you
+		might want to enter "DF0: to DF1:".
+		If you have no files selected Run will be run so you will be
+		requested for the program to run.
+		By default pressing the right mouse button on a executable
+		file will will call a similar routine.
+
+	Commd	Enter commands in the Shell/CLI window then enter endcli to
+		return to DW or if using Kick2.0- or later click the close
+		gadget.
+
+	NewSh	Does the NewShell command.  Requires all shell type files.
+
+	EScpt	Allows you to execute any selected script files.
+
+	LZ A	Adds file(s)/dir(s) to a LZ archive that you specify in the
+		prompt.
+
+
+----------------------------------------------------------------------------
+	2. Options in DirWork
+----------------------------------------------------------------------------
+Menu Options
+
+	Move the mouse pointer up to the left side of the title bar of the
+	window and press the right mouse button.
+
+
+	You can select if you want the last 8 directories read to be
+	kept in memory so that they come up when you press the right mouse
+	button over the path text gadget.
+	This is defaulted to on.
+
+
+	You can select whether you want Fast&SmoothFloppyDirs.
+	Shouldn't be needed with Kick 2.0-.
+	Note that the DirWork FSDirs does not make use of dos buffers that
+	have been added using AddBuffers, but does very well with the two
+	commercial diskbuffering programs.
+	This is defaulted to off.
+
+
+	You can select if you want the directory to be updated when you
+	change the floppy disk in one of the drives. ie  If you have DF0:
+	as either you source of destination path and insert a new disk the
+	new directory will be automatically read in.
+	This is defaulted to off.
+
+
+	You can select if you want every inserted floppy disk's boot block
+	checked to see if it is normal.  Note some bootblocks are not normal
+	and are not viruses so when you insert a disk and get the requester
+	saying this is not a normal bootblock only install if you know that
+	the bootblock does not contain important information.  See the
+	DWEdit documentation on how to allow XCopy boot blocks.
+	This is defaulted to off.
+
+
+	You can select if you want VMK(The virus detector) to be run every
+	8 seconds.  You get a requester asking for options(see VMK docs).
+	This is defaulted to off.
+
+
+	You can select if you want the screen to blank after 8 minutes of
+	no activity by the user.  A still image on a monitor is not good for
+	it so this blanks the screen.  See the DWEdit documentation on
+	how to set the amount of time the machine must be idle.
+	This is defaulted to off.
+
+
+	You can select if you want Directories displayed above files.
+	This is defaulted to off.
+
+
+	You can select if you want .info files to be displayed.
+	This is defaulted to on.
+
+
+	You can select if you want the close gadget box of the window
+	to make dirwork sleep instead of quit.
+	This is defaulted to off.
+
+
+	You can select that DirWork is to have a screen of its own instead
+	of using the workbench screen.
+	This is defaulted to off.
+
+Menu Functions
+
+	The SAVE function will modify a DW executable to have the setup
+	that you currently have.  You are prompted for the name of the DW
+	which would most likely be C:DW.  If you have turned on the external
+	config option (see DWEdit documentation) the function will first
+	save "s:DW.config" before it prompts you to save it to the
+	executable.
+	BUTTONS/INSTANTACTIONS/MENUOPTIONS/WINDOWSIZE/WINDOWPOSITION/
+	POPKEYS and heaps more are all saved with this command so set up
+	DirWork how you like it then use this command.
+
+
+	Use external configuration editor will execute the DWEdit program
+	(you must have it in a valid path such as c:) and hence allow you
+	to change the many configuration options that you can't from DW and
+	change many the ones you can in a faster and easier way to
+	understand.  Then when you quit DWEdit you can use the SAVE function
+	to save all your changes to the DW executable.
+	Here are some of the things that can be changed using DWEdit:-
+		Screen Mode/Palette/Size
+		Window/Size/Position/Colors
+		AutoPointOption
+		MouseAcceleration/Threshold
+		Position Independent Button Selection Mode
+		ButtonsBelowOption
+		ScreenBlankTime
+		Number of Bufferred Dirs
+		Task Priority
+		XCopyBootBlocks as "standard" option
+		AutoActivate of Text Gadget Option
+		Type startup ANSI option
+		RMB activate option
+		Parent buf option
+		Left and right text gadget activate keys.
+		No Duplicates of DW option
+		VMK Time value
+		External config file Option
+
+	Changing a button:-
+	You can change a button to make it do something slightly different
+	to something totally different.  Just press on the button then go
+	to the menu and select "Change last button pressed".   To change an
+	instant action you just do the instant action then select "Change
+	last button pressed".  You can also just do a binary edit of DirWork
+	and change them that way.  But the most user friendly was is to use
+	DWEdit via the "Use external configuration editor" menu item.
+	Here is the technical format anyway:-
+	"     ,       ,       "
+	 ||||| |||\__/||
+	 |     ||| |  |+------------Arguments for operation.
+	 |     ||| |  |
+	 |     ||| |  +-- Special Option for some functions
+	 |     ||| |
+	 |     ||| +------  Keyboard combination (qualifier/keycode)
+	 |     |||
+	 |     |||
+	 |     |||+-------------- Options for certain routines.
+	 |     ||
+	 |     ||
+	 |     |+--------------- What needs to be selected to operate.
+	 |     |    F=Selected Files. D=Selected Dirs.
+	 |     |    B=Selected Files &/or Dirs.
+	 |     |    A=All files/dirs even if not selected. 
+	 |     |    f=special mode that allows some files or no files
+	 |     |    0=irrelevant
+	 |     |
+	 |     +--------------- Internal routine the button uses.
+	 |               A capital letter signifies that the operation does
+	 |               not require selected files/dirs.  A lower case
+	 |               hence means the operation should require selected
+	 |               files/dirs.
+	 |      
+	 |
+	 +----------------------------------------  Button Name of 5 Chars
+	                     This is the text that is displayed inside the
+	                     button.
+
+
+
+	ChangePopKey allows you to change the keys that bring DirWork
+	out of sleep and you can define many other keys to execute other
+	programs. If you are running kick2.0- the programs are also added
+	to the workbench tools menu.  They are always added to the DW
+	tools menu.
+	Use the DWEdit program for a more user friendly way of changing
+	these entries.  By default there is a couple of entries including
+	one to wake DW up (which must always be the first entry) and
+	one to start a NewShell by pressing LeftAmiga-ESC.
+	Here is the technical format anyway:-
+
+	     "@       ,       "
+	       |||\__/||
+	       ||| |  |+---------Arguments for operation.
+	       ||| |  |           Also what appears as menu text.
+	       ||| |  |           Must have something here for PopKey/Tools
+	       ||| |  +------- Special Option for some functions
+	       ||| +------  Keyboard combination (qualifier/keycode)
+	       |||
+	       |||
+	       |||+-------------- Options for certain routines.
+	       ||
+	       ||
+	       |+--------------- What needs to be selected to operate.
+	       |    F=Selected Files. D=Selected Dirs.
+	       |    B=Selected Files &/or Dirs.
+	       |    A=All files/dirs even if not selected. 
+	       |    f=special mode that allows some files or no files
+	       |    0=irrelevant (This is usually the case for PopKey/Tools
+	       |
+	       +--------------- Internal routine the button uses.
+	                 A capital letter signifies that the operation does
+	                 not require selected files/dirs.  A lower case
+	                 hence means the operation should require selected
+	                 files/dirs.
+	        
+
+----------------------------------------------------------------------------
+	3. Hints/tips
+----------------------------------------------------------------------------
+
+	If you are a registered user just describe what sort of button you
+would like configured and I will give you the button configuration text for
+it, if it is possible.
+
+	To have the programs added to the tools menu under kick2.0-
+workbench must be loaded.  So you might have to have DW -s after loadwb and
+you might have to have a "wait 3" or similar command in between.
+
+	If DW is launched from workbench it will have the paths that were
+added before the loadwb command so put all your path additions before that
+command in your startup-sequence.  If DW is started from a Shell/CLI it will
+have all the paths that the Shell/CLI had at that point.
+
+	For DW's text/hex viewer to decrunch powerpacked files you must have
+the powerpacker.library in your libs: directory.
+
+	Since Show, Type, & DiskOp run as separate processes you can quit
+DW while they are still going.  But since they are executing from DW's
+program memory DW will not really quit.  If there are "child" processes
+still running DW goes into a delayed quit until the processes have been
+exited from then it really quits.  But if you press the wake up keys or
+similar or have no duplicates option set and start another DW while it is
+in this delayed quit mode, it will start up and forget that you ever said
+quit.  It forgives you for you mental lapse in actually wanting to quit DW !
+
+	DW makes its screen public for kickstart 2.0- so you can open other
+windows such as consoles on it.  The name of DW's screen is "DW Screen0"
+where 0 increases as you run more DW's.
+
+	You can stop a multiple file/dirs function (like copying more than
+one file or deleting files and dirs) by pressing the left mouse button over
+the error display area.  This is the area where the diskname and bytes free
+is usually displayed.
+
+	If you want to crunch DirWork use PowerPacker V3 or later as it
+does the correct things, other crunchers may cause DW to crash when
+launched from the Shell/CLI.  If you are using DW crunched you probably
+will use the external config option (selectable with DWEdit).  To do this
+go to DWEdit before you crunch DW and select the external config file
+option then quit(using quit & Save button) DWEdit and SAVE config to
+DirWork executable.  Then you can crunch DirWork and the config will always
+be fetched/stored in "s:DW.config" file.
+
+Bye,
+	Chris Hames (Available for Amiga programming work)
+

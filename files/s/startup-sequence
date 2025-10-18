@@ -1,0 +1,51 @@
+; SDBOX Multiboot Disk startup-sequence
+
+failat 21
+echo "SD-BOX Multiboot version 0.7"
+
+; Setup temp drawer
+dir RAM:
+makedir RAM:T
+assign T: RAM:T
+
+if exists ENV/BOOTRAD
+  version >NIL: 35
+  if WARN
+    mount BOOTRAD:
+  else
+    mount BOOTRAD: from DEVS/Mountlist.20 
+  endif
+
+  ; GGG Error check here doesn't work?
+  if not WARN  
+    assign SYS: BOOTRAD:
+    echo "Copying boot files to BOOTRAD:.."
+  endif
+else
+  ; Initialise RAM disk - required for 1.3
+  ; dir RAM:
+  makedir RAM:BOOT
+  assign SYS: RAM:BOOT
+  echo >SYS:REMOVE "TRUE"
+  echo "Copying boot files to RAM:.." 
+endif
+
+copy payload/common SYS: ALL QUIET
+
+version >NIL: 35
+if WARN
+  copy payload/13 SYS: ALL QUIET
+else
+  copy payload/20 SYS: ALL QUIET
+endif
+
+SYS:c/assign c: SYS:c
+SYS:c/assign s: SYS:s
+SYS:c/assign l: SYS:l
+; SYS:c/assign t: SYS:t
+SYS:c/assign DEVS: SYS:DEVS
+SYS:c/assign LIBS: SYS:libs
+SYS:c/assign FONTS: SYS:
+
+execute SYS:s/startup-sequence
+

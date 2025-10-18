@@ -1,0 +1,12 @@
+Device      = ramdrive.device
+Unit     = 5
+Flags    = 0
+Surfaces = 2
+BlocksPerTrack = 11
+SectorSize = 512
+Reserved = 2
+Interleave  = 0
+LowCyl      = 0
+HighCyl     = 6
+Buffers     = 5
+BufMemType  = 1

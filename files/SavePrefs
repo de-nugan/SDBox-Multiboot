@@ -1,0 +1,24 @@
+.KEY dummy/S
+
+echo "Copying DEVS:system-configuration to boot devices."
+
+if exists DF0:devs 
+  echo "DF0:DEVS"
+  copy devs:system-configuration df0:devs
+endif
+
+if exists DF0:payload/common/devs 
+  echo "DF0:payload/common/devs"
+  copy devs:system-configuration df0:payload/common/devs
+endif
+
+if exists BOOTRAD:devs 
+  echo "BOOTRAD:DEVS"
+  copy devs:system-configuration BOOTRAD:devs
+endif
+
+echo "Done!"
+
+
+
+

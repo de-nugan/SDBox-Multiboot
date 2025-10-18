@@ -1,0 +1,72 @@
+; install-sdbox
+
+echo "This will install SD-BOX to SYS:"
+ask "Continue (Y/N)? "
+
+if not WARN
+  echo "OK. Have a nice day!!"
+  quit
+endif
+
+copy :devs/spisd.device SYS:DEVS/
+copy :l/fat95 SYS:L/
+
+if exists SYS:DEVS/Mountlist 
+
+  if not exists SYS:DEVS/Mountlist.sdbak
+  
+    copy SYS:DEVS/Mountlist SYS:DEVS/Mountlist.sdbak
+    type :DEVS/Mountlist >> SYS:DEVS/Mountlist
+
+  endif
+
+endif 
+
+if exists SYS:DEVS/DOSDrivers
+
+  ask "Do you want to mount SD0: automatically on boot? (Y/N) "
+
+  if WARN
+
+    copy :DEVS/DOSDrivers/sd0 SYS:DEVS/DOSDrivers/
+    copy :DEVS/DOSDrivers/sd0.info SYS:DEVS/DOSDrivers/
+
+  else
+  
+    if exists SYS:Storage
+
+      if not exists SYS:Storage/DOSDrivers
+        makedir SYS:Storage/DOSDrivers
+      endif
+
+	  if exists SYS:DEVS/DOSDrivers/SD0
+	  
+	  	delete >NIL: SYS:Storage/DOSDrivers/SD0#?
+	  
+        rename SYS:DEVS/DOSDrivers/SD0 SYS:Storage/DOSDrivers/SD0
+        rename SYS:DEVS/DOSDrivers/SD0.info SYS:Storage/DOSDrivers/SD0.info
+	  
+	  else
+  
+        copy :DEVS/DOSDrivers/SD0 SYS:Storage/DOSDrivers/
+        copy :DEVS/DOSDrivers/SD0.info SYS:Storage/DOSDrivers/
+ 
+ 	  endif 
+ 	     
+      echo "SD0: can be mounted manually with 'mount SD0:'"
+    
+    else
+    
+      echo "SYS:Storage drawer is missing. I'm confused."
+      echo "Exiting.."
+      quit
+    
+    endif
+    
+  endif
+
+endif
+
+echo "SD-BOX driver installed. Have a nice day :)"
+
+

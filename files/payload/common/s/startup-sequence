@@ -1,0 +1,141 @@
+failat 21
+
+echo "Mounting SD0:.."
+mount SD0:
+
+assign >NIL: T: exists
+if WARN
+  assign T: SD0:t
+endif
+
+execute test-bootpath SD0:Workbench/
+execute test-bootpath SD0:SYS/
+execute test-bootpath SD0:
+
+; Valid targets are same version or lower
+version >NIL: 35
+if WARN
+  skip 13
+endif
+
+version >NIL: 39
+if WARN
+  skip 204
+endif 
+
+version >NIL: 47
+if WARN
+  skip 31
+endif
+
+execute test-bootpath SD0:bootenv/322/os/
+execute test-bootpath SD0:bootenv/321/os/
+execute test-bootpath SD0:bootenv/32/os/
+
+LAB 314
+execute test-bootpath SD0:bootenv/314/os/
+
+LAB 31
+execute test-bootpath SD0:bootenv/31/os/
+
+LAB 204
+execute test-bootpath SD0:bootenv/204/os/
+
+LAB 13
+execute test-bootpath SD0:bootenv/13/os/
+
+
+assign >NIL: TSYS: exists
+if WARN
+    echo "Boot environment not found on SD card."
+    echo "Insert Workbench disk in DF0: or resume with this disk."
+    ask "Hit ENTER to continue."
+    
+    if exists DF0:s/startup-sequence
+        assign SYS: DF0:
+        assign S: SYS:S
+        assign L: SYS:L
+        assign DEVS: SYS:DEVS
+        assign LIBS: SYS:LIBS    
+        assign C: SYS:C
+        assign FONTS: SYS:Fonts
+        
+        if exists DF0:payload        
+          LoadWB delay  
+          endcli >NIL:
+        else 
+          execute startup-sequence
+        endif
+    else
+        echo "startup-sequence not found. Exiting to CLI.."
+        failat 5
+    endif   
+
+    Bruce
+endif
+
+echo "Assigning SYS:.."
+assign RSYS: SYS:
+assign SYS: TSYS:
+assign C: SYS:C
+assign S: SYS:S
+assign L: SYS:L
+assign DEVS: SYS:DEVS
+assign LIBS: SYS:LIBS
+assign FONTS: SYS:Fonts
+
+; Required for next boot from RAD:
+makedir >NIL: sd0:t
+
+if exists SD0:BOOTENV/Shared
+
+  echo "Adding shared drawers.."
+  
+  assign SHARED: SD0:BOOTENV/Shared
+
+  ; Assign shared drawers. Not supported on 1.3.
+  ; Use target ASSIGN (not 1.3).
+  version >NIL: 35
+  if NOT WARN
+    if exists SHARED:LIBS
+        c:assign >NIL: LIBS: SHARED:LIBS ADD
+    endif 
+    if exists SHARED:C
+        c:assign >NIL: C: SHARED:C ADD
+    endif 
+    if exists SHARED:L
+        c:assign >NIL: L: SHARED:L ADD
+    endif
+  endif 
+endif
+
+assign >NIL: WORK: exists
+if WARN
+  if exists SD0:Work
+    assign WORK: SD0:Work
+  endif
+endif
+
+assign >NIL: DH0: exists
+if WARN
+    assign DH0: SD0:
+endif
+
+; Create shared application ASSIGNs etc.
+if exists SD0:s/startup-sd
+  execute SD0:s/startup-sd
+endif 
+
+; Clean up
+if exists RSYS:remove
+  delete RSYS:DEVS ALL QUIET
+  delete RSYS:L ALL QUIET
+  delete RSYS:Libs ALL QUIET
+  delete RSYS:C ALL QUIET
+endif
+
+assign TSYS: REMOVE
+
+echo "Executing SYS:s/startup-sequence.."
+execute Startup-Sequence
+
