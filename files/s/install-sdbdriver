@@ -1,0 +1,76 @@
+; install-sdbdriver
+
+echo "^JThis will install SDBox driver to SYS:"
+ask "^JContinue (Y/N)? "
+
+if not WARN
+  echo "^J^JOK. Have a nice day :)"
+  skip END
+endif
+
+copy SDMB:devs/spisd.device SYS:DEVS/
+copy SDMB:l/fat95 SYS:L/
+
+if exists SYS:DEVS/Mountlist 
+
+  if not exists SYS:DEVS/Mountlist.sdbak
+  
+    copy SYS:DEVS/Mountlist SYS:DEVS/Mountlist.sdbak
+    type SDMB:DEVS/Mountlist >> SYS:DEVS/Mountlist
+
+  endif
+
+endif 
+
+if exists SYS:DEVS/DOSDrivers
+
+  ask "^JDo you want to mount SD0: automatically on boot? (Y/N) "
+
+  if WARN
+
+    copy SDMB:DEVS/DOSDrivers/sd0 SYS:DEVS/DOSDrivers/
+    copy SDMB:DEVS/DOSDrivers/sd0.info SYS:DEVS/DOSDrivers/
+
+  else
+  
+    if exists SYS:Storage
+
+      if not exists SYS:Storage/DOSDrivers
+        makedir SYS:Storage/DOSDrivers
+      endif
+
+	  if exists SYS:DEVS/DOSDrivers/SD0
+	  
+	  	delete >NIL: SYS:Storage/DOSDrivers/SD0#?
+	  
+        rename SYS:DEVS/DOSDrivers/SD0 SYS:Storage/DOSDrivers/SD0
+        rename SYS:DEVS/DOSDrivers/SD0.info SYS:Storage/DOSDrivers/SD0.info
+	  
+	  else
+  
+        copy SDMB:DEVS/DOSDrivers/SD0 SYS:Storage/DOSDrivers/
+        copy SDMB:DEVS/DOSDrivers/SD0.info SYS:Storage/DOSDrivers/
+ 
+ 	  endif 
+ 	     
+      echo "^JSD0: can be mounted manually with 'mount SD0:'"
+    
+    else
+    
+      echo "^JSYS:Storage drawer is missing. I'm confused."
+      echo "^JExiting.."
+      skip END
+    
+    endif
+    
+  endif
+
+endif
+
+echo "^JSDBox driver installed."
+
+lab END
+
+SDMB:Setup
+
+

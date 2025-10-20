@@ -1,0 +1,77 @@
+; Setup 
+
+echo "^L"
+echo "***************************************************^J"
+echo "*  S  D  B  O  X       M  U  L  T  I  B  O  O  T  *^J"
+echo "***************************************************^J"
+
+assign SDMB: SDBox-Multiboot:
+
+if not exists SDMB:ENV
+
+  makedir >NIL: SDMB:ENV
+  
+endif
+
+prompt "Enter Selection: "
+
+alias f1 "SDMB:s/import-wbfiles^M"
+alias f2 "SDMB:s/toggle-sdbversion^M"
+alias f3 "SDMB:s/toggle-bootrad^M" 
+alias f4 "SDMB:s/install-sdbdriver^M"
+alias f5 "SDMB:s/mount-sdbox^M"
+alias f10 "endcli^M"
+
+echo "^JWorkbench files imported: "
+
+if exists SDMB:ENV/WB
+	echo "[YES]"
+else
+	echo "[NO]"
+endif
+
+echo "^JSDBox version: "
+
+if exists SDMB:ENV/V2
+	echo "[V2]"
+else
+	echo "[V1]"
+endif
+
+echo "^JBOOTRAD Enabled: "
+
+if exists SDMB:ENV/BOOTRAD
+	echo "[YES]"
+else
+	echo "[NO]"
+endif
+
+echo "^JSDBox Driver Installed to SYS: "
+
+if exists DEVS:spisd.device
+	echo "[YES]"
+else
+	echo "[NO]"
+endif
+
+echo "^JSDBox Mounted: "
+
+if exists SD0:
+	echo "[YES]"
+else
+	echo "[NO]"
+endif
+
+
+echo "^J^JF1 - Import Workbench Files (required)"
+echo "^JF2 - Toggle SDBox Version (V1 / V2)"
+echo "^JF3 - Toggle BOOTRAD (boot without floppy)"
+echo "^JF4 - Install SDBox Driver to SYS:"
+echo "^JF5 - Mount SDBox"
+echo "^JF10 - Exit^J^J"
+
+
+
+
+
+

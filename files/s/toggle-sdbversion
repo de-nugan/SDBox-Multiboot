@@ -1,0 +1,16 @@
+; toggle-sdbversion
+
+if exists SDMB:ENV/V2
+  copy SDMB:Storage/Devs/V1/spisd.device SDMB:Devs/
+  copy SDMB:Storage/Devs/V1/spisd.device SDMB:Payload/common/devs/
+  delete -q -r SDMB:ENV/V2
+else
+  copy SDMB:Storage/Devs/V2/spisd.device SDMB:Devs/
+  copy SDMB:Storage/Devs/V2/spisd.device SDMB:Payload/common/devs/
+  echo >SDMB:ENV/TRUE "TRUE"
+  copy SDMB:ENV/TRUE SDMB:ENV/V2
+endif
+
+SDMB:setup
+ 
+

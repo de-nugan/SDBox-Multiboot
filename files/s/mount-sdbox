@@ -1,0 +1,16 @@
+; mount-sdbox
+
+if not exists SD0:
+  if exists Devs:spisd.device
+    mount SD0:
+  else
+    echo "^JCannot mount SDBox." 
+    echo "^JSDBox driver not found in system drive."
+  endif
+else
+  echo "^JSDBox is already mounted."
+endif
+
+wait 3
+
+SDMB:Setup

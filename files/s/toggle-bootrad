@@ -1,0 +1,15 @@
+# toggle-bootrad
+
+if exists SDMB:ENV/BOOTRAD
+; delete doesn't work without -r !!
+  delete -q -r SDMB:ENV/BOOTRAD
+else
+  echo >SDMB:ENV/TRUE "TRUE"
+  copy SDMB:ENV/TRUE SDMB:ENV/BOOTRAD
+endif
+
+echo "^JPlease reboot for change to take effect..^J"
+
+SDMB:setup
+ 
+

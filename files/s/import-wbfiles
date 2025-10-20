@@ -1,0 +1,66 @@
+; import-wbfiles
+ 
+echo "^JPlease insert a Workbench 1.3 disk in DF0:^J"
+ask "Continue (Y/N)? "
+
+if not WARN
+  echo "^JOK, sure, whatevs..^J"
+  skip END
+endif
+
+echo "^JCopying files to RAM:^J"
+
+makedir >NIL: RAM:SDMBTEMP
+assign SDMBTEMP: RAM:SDMBTEMP
+
+makedir >NIL: SDMBTEMP:Devs
+makedir >NIL: SDMBTEMP:L
+
+copy DF0:C SDMBTEMP:C
+copy DF0:Libs SDMBTEMP:Libs
+copy DF0:Devs/ramdrive.device SDMBTEMP:Devs/
+copy DF0:Devs/system-configuration SDMBTEMP:Devs/
+copy DF0:L/ram-handler SDMBTEMP:L/
+
+echo "^JCopying files to SD-Box Multiboot..^J"
+
+copy SDMBTEMP:C SDMB:C ALL 
+copy SDMBTEMP:Libs SDMB:Libs ALL
+copy SDMBTEMP:Devs SDMB:Devs ALL
+copy SDMBTEMP:L SDMB:L ALL
+
+copy SDMBTEMP:C/Ask SDMB:payload/13/c/
+copy SDMBTEMP:C/Echo SDMB:payload/13/c/
+copy SDMBTEMP:C/Else SDMB:payload/13/c/
+copy SDMBTEMP:C/EndIf SDMB:payload/13/c/
+copy SDMBTEMP:C/Failat SDMB:payload/13/c/
+copy SDMBTEMP:C/If SDMB:payload/13/c/
+copy SDMBTEMP:C/Lab SDMB:payload/13/c/
+copy SDMBTEMP:C/Skip SDMB:payload/13/c/
+
+copy SDMBTEMP:C/Assign SDMB:payload/common/c/
+copy SDMBTEMP:C/Execute SDMB:payload/common/c/
+copy SDMBTEMP:C/Mount SDMB:payload/common/c/
+copy SDMBTEMP:C/Version SDMB:payload/common/c/
+
+copy SDMBTEMP:Devs/system-configuration SDMB:payload/common/devs/
+
+copy SDMBTEMP:Libs/version.library SDMB:payload/common/libs/
+
+if exists SDMB:payload/common/libs/version.library
+; The echo line below runs even when skipped!!
+; Echo, then copy is a workaround!
+  echo >SDMB:ENV/TRUE "TRUE"
+  copy SDMB:ENV/TRUE SDMB:ENV/WB 
+  echo "^JCopy complete. SDBox Multiboot is now ready to use.^J"
+endif
+
+delete -q -r SDMBTEMP:
+
+LAB END
+
+SDMB:Setup
+
+
+
+

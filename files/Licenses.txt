@@ -2,19 +2,17 @@
 
 SDBox Multiboot is possible thanks to the following included software:
 
+
 DirWork
 
 https://aminet.net/package/util/dir/DirWork162#contents
+For license see included DW.doc
 
 
 fat95
 
 https://aminet.net/package/disk/misc/fat95
-
-
-LhA
-
-https://aminet.net/package/util/arc/LhA_e138
+For license see GPL version 2.1 in archive linked above.
 
 
 Redit
@@ -25,6 +23,7 @@ https://aminet.net/package/text/edit/Redit
 SDBox
 
 https://github.com/jbilander/sdbox
+See GPL version 3 linked above
 
 
 ZShell

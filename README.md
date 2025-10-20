@@ -1,33 +1,31 @@
-# SDBox-Multiboot README 
+# SDBox Multiboot
 
-### Boot Workbench from SD card on any Amiga with SDBox!
+## INITAL SETUP (Read this before using!) 
 
-
-## HOW TO PREPARE THIS DISK (Read this first!) 
-
-This disk requires workbench files in order to function. 
-The files are not included for copyright reasons and must be copied from a Workbench 1.3 floppy as below: 
+This disk requires some files from Workbench 1.3 and the correct drivers for 
+your version of SDBox:  
 
 1. Boot into workbench
-2. Insert this disk and run activate-disk
-3. Follow the prompts to copy the Workbench files to this disk
+2. Insert this disk and run Setup
+3. Select Import Workbench Files and follow the prompts
+4. Select your version of the SDBox (V1 / V2)
+5. Enable BOOTRAD if required (persistent boot RAD: device) 
 
 
-### Note for SDbox V2 Users
+## ABOUT SDBox Multiboot (SDBM)
 
-V2 of the SDBox requires a different driver (spisd.device)
-The driver is included in the Storage drawer and must be copiied to both DEVS: and Payload/common/devs
-The DirWork (DW) file manager is included for this and all your file management needs. 
+SDBM is a disk to boot Workbench from a connected SDBox.  
 
+SDBox is cheap, fast, and compatible with all Amigas. Running Workbench 
+from SD card via SDBox makes it far more usable on any low-end Amiga. 
 
-## ABOUT SDBox Multiboot
+It's like having a portable Hard Drive for all your Amigas.
 
-The purpose of this floppy disk is to boot a Workbench environment compatible with 
-the installed kickstart from a connected SDBox device. 
+SDBM is also able to select from multiple Workbench installations on an
+SD card and boot the one that matches your Kichstart version. 
 
-This brings a portable "HDD-like" Workbench environment to any Amiga. 
+It's also a general-purpose SDBox driver and utility disk. 
 
-It's also a general-purpose SDBox utility disk. 
 
 ### Features:
 
@@ -35,6 +33,7 @@ It's also a general-purpose SDBox utility disk.
 * Optional RAD: (BOOTRAD) device to reboot from SDBox without a floppy
 * Basic SDBox driver install script for internal hard drive
 * Can boot Workbench from floppy with SDBox mounted 
+
 
 ### Some use cases:
 
@@ -44,21 +43,25 @@ It's also a general-purpose SDBox utility disk.
 * Use as your daily driver, if you dare
 * Mount SDBox then boot Workbench floppy for installation to SD card
 
+
 ## DISCLAIMER 
 
-I'm not an Amiga expert. Use entirely at your own risk.
+SDBox is not as robust as a conventional HDD system.
+It can be picky with SD cards, power sources, and there is no CRC on writes. 
+Use is entirely at your own risk! Please see the GitHub page for more info. 
+
 
 ## REQUIREMENTS
 
 * Any Amiga with Kickstart 1.3 or higher
 * SDBox and micro SD card (see below)
-* This floppy
+* This floppy disk
 * Workbench 1.3 (some files are required by SDBox Multiboot)
 
 
 ## HOW IT WORKS
 
-SDBox Multiboot boot sequence:
+### SDBox Multiboot boot sequence:
 
 1. Copies boot files to RAM: (default) or RAD: (if enabled) and continues boot from there.
 2. Mounts the SDBox (device SD0:) 
@@ -71,7 +74,8 @@ SDBox Multiboot boot sequence:
     SD0:BOOTENV/$version/OS (where $version is 13, 204, 31, 32 etc.)
 
 5. Assigns SYS:, DEVS:, LIBS: etc.   
-6. Executes startup-sd if present (for shared application assigns)
+6. Executes startup-sd if present 
+   (eg. for application assigns shared with multiple workbench instances)
 7. Passes execution to SYS:s/startup-sequence.
 
 The floppy can then be ejected as Workbench will run from the SD card.
@@ -79,15 +83,16 @@ The floppy can then be ejected as Workbench will run from the SD card.
 
 ## HOW TO PREPARE THE MICRO SD CARD
 
-1) MS-DOS partition table
-2) A single <4GB Primary Fat32 partition (smaller partitions mount more quickly)
+1) Partition with MS-DOS partition table
+2) Create a single <4GB Primary Fat32 partition 
+   (smaller partitions mount more quickly)
 
 
 ## INSTALLING WORKBENCH TO SD0: FROM AMIGA
 
 1) Insert the prepared SD card into SDBOX and boot from this floppy
 2) When prompted, insert your Workbench or WB Install floppy to DF0: and hit enter
-3) Once booted, install Workbench to SD0: in the usual way
+3) Once booted, install Workbench to SD0: as if installing to DH0:
 
 
 ## INSTALLING MULTIPLE WORKBENCHES FROM PC
@@ -115,25 +120,25 @@ Install the micro SD card and enjoy!
 When BOOTRAD is enabled the boot files will be copied to recoverable RAMDrive 
 ("BOOTRAD") instead of RAM. Workbench can then be rebooted from the SDBox without using this disk.
 
-### To Enable BOOTRAD
+To Enable/Disable BOOTRAD
 
-1) From workbench, open SDBox Multiboot and run enable-bootrad
-2) BOOTRAD is enabled at next floppy boot 
-
-### To Disable BOOTRAD
-
-1) From Workbench, open SD Multiboot and run disable-bootrad
+1) From workbench, open SDBox Multiboot and run Setup
+2) Toggle BOOTRAD so it shows as enabled or disabled as required
+3) The change will take effect on next boot
 
 Active BOOTRAD can also be cleared by powering-off the Amiga. 
 
-### CAVEATS:
+CAVEATS:
 BOOTRAD will occupy a chunk of chipram as long as it is active, whereas 
 booting from RAM: (default) releases used memory after boot completes.
 
 BOOTRAD consumes more memory on Kickstart 1.3 systems as DOS commands must also be stored. 
 On 2.0+ systems BOOTRAD can be smaller as more DOS commands are in ROM.
 
-As such BOOTRAD is not recommended on stock 1.3 Amigas. 
+As such BOOTRAD is not recommended on Amigas with <1MB RAM and Kickstart 1.3. 
+
+Also note the Disclaimer above regarding use of the SDBox. 
+As with all things in retro computing, enjoy it while it works. 
 
 
 ## OTHER NOTES
