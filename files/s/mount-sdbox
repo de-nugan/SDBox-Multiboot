@@ -1,8 +1,12 @@
 ; mount-sdbox
 
 if not exists SD0:
-  if exists Devs:spisd.device
-    mount SD0:
+  if exists DEVS:spisd.device
+    if exists DEVS:DOSDrivers
+      mount SD0:
+    else
+      mount SD0: from DEVS:mountlist
+    endif
   else
     echo "^JCannot mount SDBox." 
     echo "^JSDBox driver not found in system drive."

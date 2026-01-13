@@ -65,7 +65,7 @@ endif
 
 echo "^J^JF1 - Import Workbench Files (required)"
 echo "^JF2 - Toggle SDBox Version (V1 / V2)"
-echo "^JF3 - Toggle BOOTRAD (boot without floppy)"
+echo "^JF3 - Toggle BOOTRAD (reboot without floppy)"
 echo "^JF4 - Install SDBox Driver to SYS:"
 echo "^JF5 - Mount SDBox"
 echo "^JF10 - Exit^J^J"

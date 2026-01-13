@@ -13,21 +13,49 @@ echo "^JCopying files to RAM:^J"
 makedir >NIL: RAM:SDMBTEMP
 assign SDMBTEMP: RAM:SDMBTEMP
 
+makedir >NIL: SDMBTEMP:C
 makedir >NIL: SDMBTEMP:Devs
 makedir >NIL: SDMBTEMP:L
 
-copy DF0:C SDMBTEMP:C
+;copy DF0:C SDMBTEMP:C ALL
+copy DF0:C/if SDMBTEMP:C/
+copy DF0:C/else SDMBTEMP:C/
+copy DF0:C/endif SDMBTEMP:C/
+copy DF0:C/copy SDMBTEMP:C/
+copy DF0:C/delete SDMBTEMP:C/
+copy DF0:C/echo SDMBTEMP:C/
+copy DF0:C/dir SDMBTEMP:C/
+copy DF0:C/makedir SDMBTEMP:C/
+copy DF0:C/assign SDMBTEMP:C/
+copy DF0:C/version SDMBTEMP:C/
+copy DF0:C/mount SDMBTEMP:C/
+copy DF0:C/execute SDMBTEMP:C/
+copy DF0:C/wait SDMBTEMP:C/
+copy DF0:C/ask SDMBTEMP:C/
+copy DF0:C/skip SDMBTEMP:C/
+copy DF0:C/lab SDMBTEMP:C/
+copy DF0:C/type SDMBTEMP:C/
+copy DF0:C/rename SDMBTEMP:C/
+copy DF0:C/failat SDMBTEMP:C/
+copy DF0:C/loadwb SDMBTEMP:C/
+copy DF0:C/newcli SDMBTEMP:C/
+copy DF0:C/newshell SDMBTEMP:C/
+copy DF0:C/endcli SDMBTEMP:C/
+
 copy DF0:Libs SDMBTEMP:Libs
 copy DF0:Devs/ramdrive.device SDMBTEMP:Devs/
 copy DF0:Devs/system-configuration SDMBTEMP:Devs/
 copy DF0:L/ram-handler SDMBTEMP:L/
+;copy DF0:System/CLI SDMBTEMP:
 
 echo "^JCopying files to SD-Box Multiboot..^J"
 
-copy SDMBTEMP:C SDMB:C ALL 
+copy SDMBTEMP:C SDMB:C ALL
+
 copy SDMBTEMP:Libs SDMB:Libs ALL
 copy SDMBTEMP:Devs SDMB:Devs ALL
 copy SDMBTEMP:L SDMB:L ALL
+;copy SDMBTEMP:CLI SDMB:
 
 copy SDMBTEMP:C/Ask SDMB:payload/13/c/
 copy SDMBTEMP:C/Echo SDMB:payload/13/c/

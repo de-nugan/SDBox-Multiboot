@@ -1,11 +1,10 @@
-# SDBox Multiboot
+# **** SDBox Multiboot Disk README ****
 
 ## INITAL SETUP (Read this before using!) 
 
-This disk requires some files from Workbench 1.3 and the correct drivers for 
-your version of SDBox:  
+This disk requires some files from Workbench 1.3 before use:
 
-1. Boot into workbench
+1. Boot into workbench (any version)
 2. Insert this disk and run Setup
 3. Select Import Workbench Files and follow the prompts
 4. Select your version of the SDBox (V1 / V2)
@@ -24,14 +23,14 @@ It's like having a portable Hard Drive for all your Amigas.
 SDBM is also able to select from multiple Workbench installations on an
 SD card and boot the one that matches your Kichstart version. 
 
-It's also a general-purpose SDBox driver and utility disk. 
+It's also a general-purpose SDBox driver installer and utility disk. 
 
 
 ### Features:
 
-* Searches SD card for most compatible workbench environment
+* Checks kickstart and SD card for a compatible workbench environment
 * Optional RAD: (BOOTRAD) device to reboot from SDBox without a floppy
-* Basic SDBox driver install script for internal hard drive
+* SDBox driver install script for internal hard drive
 * Can boot Workbench from floppy with SDBox mounted 
 
 
@@ -47,7 +46,7 @@ It's also a general-purpose SDBox driver and utility disk.
 ## DISCLAIMER 
 
 SDBox is not as robust as a conventional HDD system.
-It can be picky with SD cards, power sources, and there is no CRC on writes. 
+It can be picky with SD cards, power sources, and there is no CRC on writes. It is best treated as "read only" on Amiga.
 Use is entirely at your own risk! Please see the GitHub page for more info. 
 
 
@@ -56,7 +55,7 @@ Use is entirely at your own risk! Please see the GitHub page for more info.
 * Any Amiga with Kickstart 1.3 or higher
 * SDBox and micro SD card (see below)
 * This floppy disk
-* Workbench 1.3 (some files are required by SDBox Multiboot)
+* Workbench 1.3 floppy disk (some files are required by SDBox Multiboot)
 
 
 ## HOW IT WORKS
@@ -68,10 +67,9 @@ Use is entirely at your own risk! Please see the GitHub page for more info.
 3. Checks the kickstart version 
 4. Looks for a workbench installation at these paths:
 
-    SD0:
-    SD0:Workbench
-    SD0:SYS
-    SD0:BOOTENV/$version/OS (where $version is 13, 204, 31, 32 etc.)
+SD0:
+SD0:Workbench
+SD0:BOOT/$version/SYS (where $version is 13, 204, 31, 314, 32 etc.)
 
 5. Assigns SYS:, DEVS:, LIBS: etc.   
 6. Executes startup-sd if present 
@@ -92,20 +90,23 @@ The floppy can then be ejected as Workbench will run from the SD card.
 
 1) Insert the prepared SD card into SDBOX and boot from this floppy
 2) When prompted, insert your Workbench or WB Install floppy to DF0: and hit enter
-3) Once booted, install Workbench to SD0: as if installing to DH0:
+3) Once booted, install Workbench to SD0: as if installing to DH0:*
+
+* If installing multiple workbench versions from Amiga, create the drawers listed under "Installing Multiple Workbenches" below and install to the appropriate drawer.
+Also note the caveats on writing data to SDBox from Amiga!
 
 
 ## INSTALLING MULTIPLE WORKBENCHES FROM PC
 
-1) Create the below drawers as required:
+1) Create the below drawers as required on the SD card:
 
-   BOOTENV/13/OS
-   BOOTENV/204/OS
-   BOOTENV/31/OS
-   BOOTENV/314/OS
-   BOOTENV/32/OS
-   BOOTENV/321/OS
-   BOOTENV/322/OS
+BOOT/13/SYS
+BOOT/204/SYS
+BOOT/31/SYS
+BOOT/314/SYS
+BOOT/32/SYS
+BOOT/321/SYS
+BOOT/322/SYS
 
 2) Dump Workbench floppies OR copy HDD installations to the appropriate OS drawers. 
 
@@ -143,12 +144,17 @@ As with all things in retro computing, enjoy it while it works.
 
 ## OTHER NOTES
 
+#### SOFTKICKING
+Softkicking ROM from SD-card is possible but not implimented because:
+- Confirming sufficient RAM on 1.3 is not simple, and insufficient RAM will lead to a crash.
+- Systems with sufficient RAM likely already have SCSI or IDE, therefore aren't booting from SD.
+
+#### RAD Size
 RAD size could likely be optimised a little more by reducing sector size on >2.0 systems
 but this does not appear to be possible (mount fails when SectorSize = 256). 
 
 Another option to reduce RAD size could be a compressed boot image that unpacks to RAM
-at boot time but LhA executable is already as large as current RAD. 
-
+at boot time but LhA alone is already as large as the RAD. 
 
 
 

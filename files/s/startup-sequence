@@ -1,7 +1,7 @@
 ; SDBOX Multiboot Disk startup-sequence
 
 failat 21
-echo "SD-BOX Multiboot version 0.7"
+echo "SD-BOX Multiboot version 0.7.2"
 
 ; Setup temp drawer
 dir RAM:

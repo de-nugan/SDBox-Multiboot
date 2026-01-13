@@ -9,8 +9,11 @@ if WARN
 endif
 
 execute test-bootpath SD0:Workbench/
-execute test-bootpath SD0:SYS/
 execute test-bootpath SD0:
+
+if not exists SD0:boot
+  skip SEARCHRESULT
+endif
 
 ; Valid targets are same version or lower
 version >NIL: 35
@@ -28,26 +31,27 @@ if WARN
   skip 31
 endif
 
-execute test-bootpath SD0:bootenv/322/os/
-execute test-bootpath SD0:bootenv/321/os/
-execute test-bootpath SD0:bootenv/32/os/
+execute test-bootpath SD0:boot/322/sys/
+execute test-bootpath SD0:boot/321/sys/
+execute test-bootpath SD0:boot/32/sys/
 
 LAB 314
-execute test-bootpath SD0:bootenv/314/os/
+execute test-bootpath SD0:boot/314/sys/
 
 LAB 31
-execute test-bootpath SD0:bootenv/31/os/
+execute test-bootpath SD0:boot/31/sys/
 
 LAB 204
-execute test-bootpath SD0:bootenv/204/os/
+execute test-bootpath SD0:boot/204/sys/
 
 LAB 13
-execute test-bootpath SD0:bootenv/13/os/
+execute test-bootpath SD0:boot/13/sys/
 
 
+LAB SEARCHRESULT
 assign >NIL: TSYS: exists
 if WARN
-    echo "Boot environment not found on SD card."
+    echo "Workbench not found on device SD0:"
     echo "Insert Workbench disk in DF0: or resume with this disk."
     ask "Hit ENTER to continue."
     
@@ -67,7 +71,7 @@ if WARN
           execute startup-sequence
         endif
     else
-        echo "startup-sequence not found. Exiting to CLI.."
+        echo "startup-sequence not found, exiting to CLI. Run ZShell for more commands."
         failat 5
     endif   
 
@@ -87,11 +91,11 @@ assign FONTS: SYS:Fonts
 ; Required for next boot from RAD:
 makedir >NIL: sd0:t
 
-if exists SD0:BOOTENV/Shared
+if exists SD0:boot/Shared
 
   echo "Adding shared drawers.."
   
-  assign SHARED: SD0:BOOTENV/Shared
+  assign SHARED: SD0:boot/Shared
 
   ; Assign shared drawers. Not supported on 1.3.
   ; Use target ASSIGN (not 1.3).

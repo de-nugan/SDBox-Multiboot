@@ -16,7 +16,7 @@ if exists SYS:DEVS/Mountlist
   if not exists SYS:DEVS/Mountlist.sdbak
   
     copy SYS:DEVS/Mountlist SYS:DEVS/Mountlist.sdbak
-    type SDMB:DEVS/Mountlist >> SYS:DEVS/Mountlist
+    type >>SYS:DEVS/Mountlist SDMB:DEVS/Mountlist
 
   endif
 
@@ -65,9 +65,17 @@ if exists SYS:DEVS/DOSDrivers
     
   endif
 
+else
+
+  copy SDMB:DEVS/DOSDrivers/sd0 SYS:
+  copy SDMB:DEVS/DOSDrivers/sd0.info SYS:
+  echo "^JSD0: can be mounted manually with 'mount SD0: from devs:mountlist'"
+
 endif
 
-echo "^JSDBox driver installed."
+echo "^J^JSDBox driver installed.^J^J"
+
+ask "Press Enter to continue."
 
 lab END
 
